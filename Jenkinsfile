@@ -11,7 +11,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("as/as1")
+        app = docker.build("mhrdev19/as")
     }
 
     stage('Test image') {
