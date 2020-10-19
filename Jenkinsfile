@@ -11,7 +11,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("anandr72/nodeapp")
+        app = docker.build("as/as1")
     }
 
     stage('Test image') {
