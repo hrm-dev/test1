@@ -2,22 +2,17 @@
 node {
     def app
 
-    stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
-
+    stage('Pobranie repo') {
         checkout scm
     }
 
-    stage('Build image') {
-        /* This builds the actual image */
-
+    stage('Buduj obraz') {
         app = docker.build("mhrdev19/as")
     }
 
-    stage('Test image') {
-        
+    stage('Testy') {
         app.inside {
-            echo "Tests passed"
+            apachectl -t |grep aaa
         }
     }
 

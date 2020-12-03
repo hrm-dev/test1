@@ -1,13 +1,17 @@
-# use a node base image
-FROM node:7-onbuild
 
-# set maintainer
-LABEL maintainer "crudsinfotechng@gmail.com"
+FROM ubuntu:20.04
 
-# set a health check
-HEALTHCHECK --interval=5s \
-            --timeout=5s \
-            CMD curl -f http://127.0.0.1:8000 || exit 1
+RUN apt-get update && apt-get install -y apache2 curl unzip && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# tell docker what port to expose
-EXPOSE 8000
+COPY index.html /var/www/html
+#ENV APACHE_RUN_USER www-data
+#ENV APACHE_RUN_GROUP www-data
+#ENV APACHE_LOG_DIR /var/log/apache2
+#ENV APACHE_PID_FILE /var/run/apache2.pid
+#ENV APACHE_RUN_DIR /var/run/apache2
+#ENV APACHE_LOCK_DIR /var/lock/apache2
+
+EXPOSE 80 443
+
+ENTRYPOINT ["/usr/sbin/apache2ctl"]
+CMD ["-D", "FOREGROUND"]
