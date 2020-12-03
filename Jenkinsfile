@@ -12,7 +12,7 @@ node {
 
     stage('Testy') {
         app.inside {
-            eccho "test"
+            echo "test"
         }
     }
 
