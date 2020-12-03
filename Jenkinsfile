@@ -11,7 +11,7 @@ node {
 
     stage('Testy') {
         app.inside {
-            apachectl -t
+            apache2ctl -t
         }
     }
 
