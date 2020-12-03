@@ -11,7 +11,7 @@ node {
 
     stage('Testy') {
         app.inside {
-            echo "test"
+            apache2ctl -t &>/dev/null && echo "test" || echo "blad"
         }
     }
 
