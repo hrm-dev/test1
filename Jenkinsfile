@@ -9,11 +9,11 @@ node {
         app = docker.build("mhrdev19/as")
     }
 
-#    stage('Testy') {
-#        app.inside {
-#            apache2ctl -t
-#        }
-#    }
+/*    stage('Testy') {
+        app.inside {
+            apache2ctl -t
+        }
+    }*/
       stage('Testy') {
         docker.image('centos:7').inside("--link ${c.id}:db") {
             /*
