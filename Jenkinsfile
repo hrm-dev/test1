@@ -12,7 +12,7 @@ node {
 
     stage('Testy') {
         app.inside {
-            apachectl -t |grep aaa
+            eccho "test"
         }
     }
 
