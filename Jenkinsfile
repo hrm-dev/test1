@@ -8,11 +8,15 @@ node {
     stage('Buduj obraz') {
         app = docker.build("mhrdev19/as")
     }
-
+/*
     stage('Testy') {
         app.inside {
             sh 'ps -a'
         }
+    }
+*/
+    docker.image('mhrdev19/as') { 
+        sh 'echo ok'
     }
 
     stage('Push image') {
