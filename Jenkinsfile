@@ -1,33 +1,13 @@
 node {
-    def app
-
-    stage('Pobranie repo') {
-        checkout scm
-    }
-
-    stage('Buduj obraz') {
-        app = docker.build("mhrdev19/as")
-    }
-/*
-    stage('Testy') {
-        app.inside {
-            sh 'ps -a'
-        }
-    }
-*/
-    docker.image('mhrdev19/as') { 
-        sh 'echo ok'
-    }
-
-    stage('Push image') {
-        /* 
-			You would need to first register with DockerHub before you can push images to your account
-		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-            } 
-                echo "Trying to Push Docker Build to DockerHub"
+    checkout scm
+    /*
+     * In order to communicate with the MySQL server, this Pipeline explicitly
+     * maps the port (`3306`) to a known port on the host machine.
+     */
+    docker.image('mysql:5').withRun('-e "MYSQL_ROOT_PASSWORD=my-secret-pw" -p 3306:3306') { c ->
+        /* Wait until mysql service is up */
+        sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
+        /* Run some tests which require MySQL */
+        sh 'make check'
     }
 }
-
