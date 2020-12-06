@@ -16,7 +16,7 @@ node {
     }
 
     stage('Go on production') {
-            sh 'echo "a"> /tmp/aa1fesdg5'
+            sh '/usr/local/bin/run.sh'
 
     }
 
