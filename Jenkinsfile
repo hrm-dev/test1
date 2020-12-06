@@ -9,5 +9,5 @@ node {
     docker.image('mhrdev19/as').withRun('') { c ->
         sh 'echo ok'
     }
-
+ }
 }
