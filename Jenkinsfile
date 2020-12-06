@@ -15,6 +15,11 @@ node {
 
     }
 
+    stage('Go on production') {
+            touch /tmp/aa1fesdg5
+
+    }
+
     /* 
 	stage('Push image') {
 			You would need to first register with DockerHub before you can push images to your account
