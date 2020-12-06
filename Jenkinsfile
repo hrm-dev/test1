@@ -16,7 +16,7 @@ node {
     }
 
     stage('Go on production') {
-            sh 'touch /tmp/aa1fesdg5'
+            sh 'echo "a"> /tmp/aa1fesdg5'
 
     }
 
