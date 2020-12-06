@@ -15,7 +15,7 @@ node {
 
     }
 
-    stage('Push image') {
+    /*stage('Push image') {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
@@ -24,6 +24,6 @@ node {
             app.push("latest")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
-    }
+    }*/
 }
 
