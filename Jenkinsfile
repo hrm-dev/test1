@@ -10,7 +10,7 @@ node {
     }
     stage('Testy') {
         docker.image('mhrdev19/as').withRun('-p 81:80') { c ->
-            sh 'curl http://localhost:81/index.html'
+            sh 'curl -s http://localhost:81/index.html'
     	}
 
     }
