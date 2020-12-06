@@ -6,6 +6,6 @@ node {
      * maps the port (`3306`) to a known port on the host machine.
      */
     docker.image('mhrdev19/as').withRun('') { c ->
-        sh 'apache2ctl -t'
+        sh 'apache2ctl -t &>/dev/null && echo "test" || echo "blad"'
     }
 }
