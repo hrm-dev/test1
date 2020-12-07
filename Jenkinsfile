@@ -9,7 +9,7 @@ node {
         app = docker.build("mhrdev19/as")
     }
     stage('Testy') {
-        docker.image('mhrdev19/as').withRun('-d -p 81:80') { c ->
+        docker.image('mhrdev19/as').withRun('--name tests -d -p 81:80') { c ->
             sh 'curl -s http://localhost:81/index.html'
     	}
 
