@@ -7,7 +7,7 @@ node {
 
     stage('Buduj obraz') {
         app = docker.build("mhrdev19/as")
-	app.push()
+/*	app.push() */
     }
     stage('Testy') {
         docker.image('mhrdev19/as').withRun('--name tests -d -p 81:80') { c ->
