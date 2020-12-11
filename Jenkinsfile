@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+//    agent any
+    agent { dockerfile true }
 
     environment {
         FOO = "bar"
@@ -7,11 +8,6 @@ pipeline {
 
 
     stages {
-/*        stage('Prepare') {
-            steps {
-                checkout scm
-            }
-        } */
         stage("Build") {
             options {
                 timeout(time: 1, unit: "MINUTES")
@@ -35,3 +31,4 @@ pipeline {
         }
     }
 }
+
