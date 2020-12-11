@@ -7,11 +7,11 @@ pipeline {
 
 
     stages {
-#        stage('Prepare') {
-#            steps {
-#                checkout scm
-#            }
-#        }
+/*        stage('Prepare') {
+            steps {
+                checkout scm
+            }
+        } */
         stage("Build") {
             options {
                 timeout(time: 1, unit: "MINUTES")
