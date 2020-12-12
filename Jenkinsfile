@@ -20,8 +20,7 @@ pipeline {
         stage("Test") {
 	     agent {
         docker {
-                image 'maven:3-alpine'
-                label 'my-defined-label'
+                image 'asd'
                 args  '-v /tmp:/tmp'
         }
      }
