@@ -13,15 +13,11 @@ pipeline {
                 timeout(time: 1, unit: "MINUTES")
             }
             steps {
-//		sh 'touch test1'
-  //              sh 'printf "\\e[31mSome code compilation here...\\e[0m\\n"'
 		sh 'docker build -t asd .'
-
-
             }
         }
-
-/*        stage("Test") {
+	agent asd
+        stage("Test") {
             when {
                 environment name: "FOO", value: "bar"
             }
@@ -31,7 +27,7 @@ pipeline {
             steps {
                 sh 'printf "\\e[31mSome tests execution here...\\e[0m\\n"'
             }
-        }*/
+        }
     }
 }
 
