@@ -15,9 +15,7 @@ pipeline {
             steps {
 //		sh 'touch test1'
   //              sh 'printf "\\e[31mSome code compilation here...\\e[0m\\n"'
-                script { 
-                    docker.build + ":$BUILD_NUMBER"  
-                }
+		sh 'docker build -t asd .'
 
 
             }
