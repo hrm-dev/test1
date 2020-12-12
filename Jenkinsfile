@@ -1,6 +1,6 @@
 pipeline {
-    agent any
-//    agent { dockerfile true }
+//    agent any
+    agent { dockerfile true }
 
     environment {
         FOO = "bar"
@@ -15,10 +15,15 @@ pipeline {
             steps {
 		sh 'touch test1'
                 sh 'printf "\\e[31mSome code compilation here...\\e[0m\\n"'
+                script { 
+                    dockerImage = docker.build + ":$BUILD_NUMBER" 
+                }
+
+
             }
         }
 
-        stage("Test") {
+/*        stage("Test") {
             when {
                 environment name: "FOO", value: "bar"
             }
@@ -28,7 +33,7 @@ pipeline {
             steps {
                 sh 'printf "\\e[31mSome tests execution here...\\e[0m\\n"'
             }
-        }
+        }*/
     }
 }
 
