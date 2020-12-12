@@ -17,14 +17,15 @@ pipeline {
             }
         }
 
-     agent {
-    	docker {
-        	image 'maven:3-alpine'
-        	label 'my-defined-label'
-        	args  '-v /tmp:/tmp'
-    	}
-     }
         stage("Test") {
+	     agent {
+        docker {
+                image 'maven:3-alpine'
+                label 'my-defined-label'
+                args  '-v /tmp:/tmp'
+        }
+     }
+
             when {
                 environment name: "FOO", value: "bar"
             }
