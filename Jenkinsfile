@@ -16,7 +16,7 @@ pipeline {
 		sh 'docker build -t asd .'
             }
         }
-	agent asd
+    agent asd
         stage("Test") {
             when {
                 environment name: "FOO", value: "bar"
