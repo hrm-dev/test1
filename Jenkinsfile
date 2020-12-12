@@ -16,7 +16,7 @@ pipeline {
 //		sh 'touch test1'
   //              sh 'printf "\\e[31mSome code compilation here...\\e[0m\\n"'
                 script { 
-                    dockerImage = docker.build + ":$BUILD_NUMBER" 
+                    docker.build 
                 }
 
 
