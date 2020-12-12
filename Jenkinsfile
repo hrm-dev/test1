@@ -1,6 +1,6 @@
 pipeline {
 //    agent any
-    agent { dockerfile true }
+//    agent { dockerfile true }
 
     environment {
         FOO = "bar"
