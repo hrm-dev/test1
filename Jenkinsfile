@@ -26,7 +26,7 @@ pipeline {
         stage("Test") {
 	    agent {
               docker {
-                 image = 'httpd:latest'
+                 image 'httpd:latest'
               }
     }
             when {
