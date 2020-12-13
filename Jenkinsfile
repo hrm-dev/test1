@@ -27,7 +27,7 @@ pipeline {
 	     agent {
         docker {
                 image 'test/as:latest'
-                args  '-v /tmp:/tmp'
+                args  '-d -p 8111:80'
         }
      }
 
