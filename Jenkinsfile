@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
 //    agent { dockerfile true }
 
     environment {
@@ -23,24 +23,12 @@ pipeline {
             }
         }
 
-            agent {
+        stage("Test") {
+	    agent {
               docker {
                  image 'httpd:latest'
               }
     }
-
-        stage("Test") {
-/*	    agent {
-              docker {
-                 image 'httpd:latest'
-              }
-    }*/
-            when {
-                environment name: "FOO", value: "bar"
-            }
-/*            options {
-                timeout(time: 15, unit: "SECONDS")
-            }*/
             steps {
                 sh 'apache2ctl -t'
             }
