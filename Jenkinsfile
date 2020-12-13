@@ -24,13 +24,9 @@ pipeline {
         }
 
         stage("Test") {
-	     agent {
-        docker {
-                image 'test/as:latest'
-                args  '-d -p 8111:80'
-        }
-     }
-
+	    agent {
+        dockerfile true
+    }
             when {
                 environment name: "FOO", value: "bar"
             }
