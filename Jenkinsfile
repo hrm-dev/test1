@@ -4,6 +4,8 @@ pipeline {
 
     environment {
         FOO = "bar"
+	imagename = "test/as"
+	dockerImage = ''
     }
 
 
@@ -13,7 +15,9 @@ pipeline {
                 timeout(time: 1, unit: "MINUTES")
             }
             steps {
-		sh 'docker build -t asd .'
+	//	sh 'docker build -t asd .'
+		dockerImage = docker.build imagename
+
             }
         }
 
