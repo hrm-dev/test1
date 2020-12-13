@@ -4,8 +4,8 @@ pipeline {
 
     environment {
         FOO = "bar"
-	imagename = "test/as"
-	dockerImage = ''
+        imagename = "test/as"
+        dockerImage = ''
     }
 
 
@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
 	//	sh 'docker build -t asd .'
-		dockerImage = docker.build imagename
+                dockerImage = docker.build imagename
 
             }
         }
