@@ -25,7 +25,9 @@ pipeline {
 
         stage("Test") {
 	    agent {
-        dockerfile true
+		docker {
+			image: 'httpd:latest'
+		}
     }
             when {
                 environment name: "FOO", value: "bar"
