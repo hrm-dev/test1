@@ -23,12 +23,18 @@ pipeline {
             }
         }
 
-        stage("Test") {
-	    agent {
+            agent {
               docker {
                  image 'httpd:latest'
               }
     }
+
+        stage("Test") {
+/*	    agent {
+              docker {
+                 image 'httpd:latest'
+              }
+    }*/
             when {
                 environment name: "FOO", value: "bar"
             }
