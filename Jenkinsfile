@@ -34,9 +34,9 @@ pipeline {
             when {
                 environment name: "FOO", value: "bar"
             }
-            options {
+/*            options {
                 timeout(time: 15, unit: "SECONDS")
-            }
+            }*/
             steps {
                 sh 'apache2ctl -t'
             }
