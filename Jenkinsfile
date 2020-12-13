@@ -36,7 +36,7 @@ pipeline {
                 timeout(time: 15, unit: "SECONDS")
             }*/
             steps {
-                sh 'echo OK'
+                sh 'apache2ctl -t'
             }
         }
     }
