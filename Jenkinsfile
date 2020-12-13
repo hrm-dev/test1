@@ -16,7 +16,9 @@ pipeline {
             }
             steps {
 	//	sh 'docker build -t asd .'
-                dockerImage = docker.build imagename
+		script {
+                	dockerImage = docker.build imagename
+		}
 
             }
         }
