@@ -17,7 +17,7 @@ pipeline {
             steps {
 	//	sh 'docker build -t asd .'
 		script {
-                	dockerImage = docker.build imagename
+                	dockerImage = docker.build imagename + ":$BUILD_NUMBER" 
 		}
 
             }
@@ -26,7 +26,7 @@ pipeline {
         stage("Test") {
 	     agent {
         docker {
-                image 'asd'
+                image 'test/as:latest'
                 args  '-v /tmp:/tmp'
         }
      }
@@ -38,7 +38,7 @@ pipeline {
                 timeout(time: 2, unit: "MINUTES")
             }
             steps {
-                sh 'printf "\\e[31mSome tests execution here...\\e[0m\\n"'
+                sh 'apache2ctl -t'
             }
         }
     }
