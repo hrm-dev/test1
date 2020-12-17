@@ -15,7 +15,6 @@ pipeline {
                 timeout(time: 1, unit: "MINUTES")
             }
             steps {
-	//	sh 'docker build -t asd .'
 		script {
                 	dockerImage = docker.build imagename + ":$BUILD_NUMBER" 
 		}
@@ -25,10 +24,7 @@ pipeline {
 
         stage("Test") {
 	    agent {
-              docker { 
-		image 'httpd:latest' 
-		//args '-p 9091:80 -d'
-	      }
+              docker { image 'httpd:latest' }
     	    }
             steps {
                 sh 'apachectl -t'
