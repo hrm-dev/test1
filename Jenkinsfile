@@ -27,11 +27,11 @@ pipeline {
 	    agent {
               docker { 
 		image 'httpd:latest' 
-		args '-p 9091:80 -d'
+		//args '-p 9091:80 -d'
 	      }
     	    }
             steps {
-                sh 'apache2ctl -t'
+                sh 'apachectl -t'
             }
         }
     }
